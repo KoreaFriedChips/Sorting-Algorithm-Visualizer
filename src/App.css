@@ -80,3 +80,34 @@ button:focus {
   background-color: #007bff;
   cursor: pointer;
 }
+
+.pseudo-code {
+  text-align: left;
+  margin: 0;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+ul {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  list-style-type: disc;
+}
+
+li {
+  list-style-type: disc;
+  list-style-position: inside;
+  text-align: center;
+}

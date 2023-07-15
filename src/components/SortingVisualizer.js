@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AlgorithmInfo from './AlgorithmInfo';
 
 class SortingVisualizer extends Component {
     constructor(props) {
@@ -9,6 +10,7 @@ class SortingVisualizer extends Component {
             array: [],
             isSorting: false,
             delaySpeed: 10,
+            selectedAlgorithm: null,
         };
     }
 
@@ -17,6 +19,7 @@ class SortingVisualizer extends Component {
     }
 
     generateArray() {
+        this.setState({ selectedAlgorithm: null })
         const array = [];
         for (let i = 0; i < 50; i++) {
             array.push(randomIntFromInterval(5, 400));
@@ -54,6 +57,7 @@ class SortingVisualizer extends Component {
             return
         // Set isSorting to true to disable other buttons
         this.setState({ isSorting: true });
+        this.setState({ selectedAlgorithm: 'Bubble Sort' });
         const { array } = this.state
         const sortedArray = array.slice();
         const animations = [];
@@ -81,6 +85,7 @@ class SortingVisualizer extends Component {
             return
         // Set isSorting to true to disable other buttons
         this.setState({ isSorting: true });
+        this.setState({ selectedAlgorithm: 'Selection Sort' });
         const { array } = this.state
         const sortedArray = array.slice();
         const animations = [];
@@ -113,6 +118,7 @@ class SortingVisualizer extends Component {
         }
         // Set isSorting to true to disable other buttons
         this.setState({ isSorting: true });
+        this.setState({ selectedAlgorithm: 'Insertion Sort' })
         const { array } = this.state;
         const sortedArray = array.slice();
         const animations = [];
@@ -219,7 +225,7 @@ class SortingVisualizer extends Component {
     }
 
     render() {
-        const { array, isSorting, delaySpeed } = this.state;
+        const { array, isSorting, delaySpeed, selectedAlgorithm } = this.state;
         // console.log(array)
         return (
             <div className='sorting-visualizer'>
@@ -255,6 +261,9 @@ class SortingVisualizer extends Component {
                     />
                 </div>
                 <button onClick={() => this.generateArray()} disabled={isSorting}>Generate New Array</button>
+                {selectedAlgorithm && (
+                    <AlgorithmInfo algorithm={selectedAlgorithm} />
+                )}
             </div>
         );
     }
