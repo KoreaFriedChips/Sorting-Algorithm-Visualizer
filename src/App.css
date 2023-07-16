@@ -81,6 +81,10 @@ button:focus {
   cursor: pointer;
 }
 
+.algorithm-info {
+  margin-top: 1rem;
+}
+
 .pseudo-code {
   text-align: left;
   margin: 0;
@@ -90,6 +94,7 @@ button:focus {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+  width: 1000px;
 }
 
 .column {
@@ -101,12 +106,14 @@ button:focus {
 
 ul {
   padding-left: 20px;
+  word-wrap: normal;
   display: flex;
   flex-direction: column;
   list-style-type: disc;
 }
 
 li {
+  text-align: left;
   list-style-type: disc;
   list-style-position: inside;
   text-align: center;

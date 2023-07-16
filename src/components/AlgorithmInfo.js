@@ -14,9 +14,11 @@ const AlgorithmInfo = ({ algorithm }) => {
             if array[j] > array[j + 1]
               swap array[j] and array[j + 1]
     `;
-        complexity = ['Time Complexity: O(n^2)', 'Space Complexity: O(1)'];
-        advantages = ['Simple implementation', 'Easy to understand'];
-        disadvantages = ['Inefficient for large datasets']
+        complexity = [<span>
+            Time Complexity: O(n<sup>2</sup>)
+        </span>, 'Space Complexity: O(1)'];
+        advantages = ['Simple implementation and easy to understand', 'Stable sorting algorithm, meaning that elements with the same key value maintain their relative order in the sorted output'];
+        disadvantages = ['Inefficient for large datasets', 'Comparison-based sorting algorithm, which means that a comparison operator is used to determine the relative order of elements in the input data set and limits the efficiency of the algorithm in certain cases']
     } else if (algorithm === 'Selection Sort') {
         pseudoCode = `      function selectionSort(array)
         for i from 0 to array.length - 1
@@ -27,7 +29,9 @@ const AlgorithmInfo = ({ algorithm }) => {
               swap array[i] and array[minIndex]
       
     `;
-        complexity = ['Time Complexity: O(n^2)', 'Space Complexity: O(1)'];
+        complexity = [<span>
+            Time Complexity: O(n<sup>2</sup>)
+        </span>, 'Space Complexity: O(1)'];
         advantages = ['Simple implementation', 'Easy to understand', 'In-place sorting algorithm, meaning it doesn\'t require additional memory'];
         disadvantages = ['Inefficient for large datasets', 'It doesn\'t adapt to the input, so it performs the same number of comparisons and swaps even if the array is partially sorted']
     } else if (algorithm === 'Insertion Sort') {
@@ -40,7 +44,9 @@ const AlgorithmInfo = ({ algorithm }) => {
               j = j - 1
             array[j + 1] = key
         `;
-        complexity = ['Time Complexity: O(n^2)', 'Space Complexity: O(1)'];
+        complexity = [<span>
+            Time Complexity: O(n<sup>2</sup>)
+        </span>, 'Space Complexity: O(1)'];
         advantages = ['Simple implementation', 'Efficient for small datasets or partially sorted arrays'];
         disadvantages = ['Inefficient for large datasets', 'Slower than more advanced sorting algorithms'];
     }

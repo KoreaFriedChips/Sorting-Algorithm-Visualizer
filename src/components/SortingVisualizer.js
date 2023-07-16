@@ -169,7 +169,7 @@ class SortingVisualizer extends Component {
     animateSorting(animations, sortedArray) {
         const arrayBars = document.getElementsByClassName('array-bar');
         const animationSpeed = this.state.delaySpeed; // Adjust the animation speed as needed
-        const resetDelay = animations.length * animationSpeed + 400;
+        const resetDelay = animations.length * animationSpeed;
 
         for (let i = 0; i < animations.length; i++) {
             const [barOneIdx, barTwoIdx, animationType] = animations[i];
@@ -180,23 +180,27 @@ class SortingVisualizer extends Component {
             setTimeout(() => {
                 if (animationType === 'compare') {
                     // Apply animation for comparing two elements
-                    barOneStyle.backgroundColor = 'red';
-                    barTwoStyle.backgroundColor = 'red';
-
-                    // Reset the colors after the comparison
                     setTimeout(() => {
-                        barOneStyle.backgroundColor = '#007bff';
-                        barTwoStyle.backgroundColor = '#007bff';
-                    }, delay + animationSpeed);
+                        barOneStyle.backgroundColor = 'red';
+                        barTwoStyle.backgroundColor = 'red';
+
+                        // Reset the colors after the comparison
+                        setTimeout(() => {
+                            barOneStyle.backgroundColor = '#007bff';
+                            barTwoStyle.backgroundColor = '#007bff';
+                        }, animationSpeed);
+                    }, delay);
                 } else if (animationType === 'swap') {
                     // Apply animation for swapping two elements
-                    barOneStyle.backgroundColor = 'green';
-                    barTwoStyle.backgroundColor = 'green';
+                    setTimeout(() => {
+                        barOneStyle.backgroundColor = 'green';
+                        barTwoStyle.backgroundColor = 'green';
 
-                    // Swap the heights of the bars
-                    const tempHeight = barOneStyle.height;
-                    barOneStyle.height = barTwoStyle.height;
-                    barTwoStyle.height = tempHeight;
+                        // Swap the heights of the bars
+                        const tempHeight = barOneStyle.height;
+                        barOneStyle.height = barTwoStyle.height;
+                        barTwoStyle.height = tempHeight;
+                    }, delay);
 
                     // Reset the colors after the swap
                     setTimeout(() => {
@@ -214,10 +218,12 @@ class SortingVisualizer extends Component {
             }
             // Update the state with the sorted array
             this.setState({ array: sortedArray });
-            this.setState({ isSorting: false })
+            this.setState({ isSorting: false });
             toast.success('Congratulations! The array is now sorted!');
-        }, resetDelay);
+        }, resetDelay + animationSpeed);
     }
+
+
 
     handleDelaySpeedChange = (event) => {
         this.setState({ delaySpeed: parseInt(event.target.value) });
