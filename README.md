@@ -9,11 +9,11 @@ In this project I show more techinical and algorithmic knowledge with a sorting 
 - Pseudo Code
 
 ```
-      function bubbleSort(array)
-        for i from 0 to array.length - 1
-          for j from 0 to array.length - i - 1
-            if array[j] > array[j + 1]
-              swap array[j] and array[j + 1]
+    function bubbleSort(array)
+      for i from 0 to array.length - 1
+        for j from 0 to array.length - i - 1
+          if array[j] > array[j + 1]
+            swap array[j] and array[j + 1]
 ```
 
 - Complexity Analysis
@@ -31,19 +31,18 @@ In this project I show more techinical and algorithmic knowledge with a sorting 
 - Pseudo Code
 
 ```
-      function selectionSort(array)
-        for i from 0 to array.length - 1
-          minIndex = i
-            for j from i + 1 to array.length
-              if array[j] < array[minIndex]
-                minIndex = j
-              swap array[i] and array[minIndex]
-
+    function selectionSort(array)
+      for i from 0 to array.length - 1
+        minIndex = i
+        for j from i + 1 to array.length
+          if array[j] < array[minIndex]
+            minIndex = j
+          swap array[i] and array[minIndex]
 ```
 
 - Complexity Analysis
   - Time Complexity: O(n^2)
-  - Space Complexity: O(1)
+    Space Complexity: O(1)
 - Advantages
   - Simple implementation and easy to understand
   - In-place sorting algorithm, meaning it doesn't require additional memory
@@ -56,14 +55,14 @@ In this project I show more techinical and algorithmic knowledge with a sorting 
 - Pseudo Code
 
 ```
-      function insertionSort(array)
-        for i from 1 to array.length - 1
-          key = array[i]
-            j = i - 1
-            while j >= 0 and array[j] > key
-              array[j + 1] = array[j]
-              j = j - 1
-            array[j + 1] = key
+    function insertionSort(array)
+      for i from 1 to array.length - 1
+        key = array[i]
+        j = i - 1
+        while j >= 0 and array[j] > key
+          array[j + 1] = array[j]
+          j = j - 1
+        array[j + 1] = key
 ```
 
 - Complexity Analysis
@@ -77,43 +76,37 @@ In this project I show more techinical and algorithmic knowledge with a sorting 
   - Slower than more advanced sorting algorithms
 
 ## Merge Sort
-<<<<<<< HEAD
-- pseudo code
-- complexity analysis
-- advantages
-- disadvantages
-=======
 
 - Pseudo Code
 
 ```
-      function mergeSort(array):
-        if length of array <= 1:
-          return array
+    function mergeSort(array):
+      if length of array <= 1:
+        return array
 
-        mid = length of array / 2
-        leftArray = mergeSort(subarray from start to mid)
-        rightArray = mergeSort(subarray from mid+1 to end)
+      mid = length of array / 2
+      leftArray = mergeSort(subarray from start to mid)
+      rightArray = mergeSort(subarray from mid+1 to end)
 
-        return merge(leftArray, rightArray)
+      return merge(leftArray, rightArray)
 
-      function merge(leftArray, rightArray):
-        mergedArray = empty array
-        leftIndex = 0
-        rightIndex = 0
+    function merge(leftArray, rightArray):
+      mergedArray = empty array
+      leftIndex = 0
+      rightIndex = 0
 
-        while leftIndex < length of leftArray and rightIndex < length of rightArray:
-          if leftArray[leftIndex] <= rightArray[rightIndex]:
-            append leftArray[leftIndex] to mergedArray
-            increment leftIndex
-          else:
-            append rightArray[rightIndex] to mergedArray
-            increment rightIndex
+      while leftIndex < length of leftArray and rightIndex < length of rightArray:
+        if leftArray[leftIndex] <= rightArray[rightIndex]:
+          append leftArray[leftIndex] to mergedArray
+          increment leftIndex
+        else:
+          append rightArray[rightIndex] to mergedArray
+          increment rightIndex
 
-        append remaining elements in leftArray (if any) to mergedArray
-        append remaining elements in rightArray (if any) to mergedArray
+      append remaining elements in leftArray (if any) to mergedArray
+      append remaining elements in rightArray (if any) to mergedArray
 
-        return mergedArray
+      return mergedArray
 ```
 
 - Complexity Analysis
@@ -137,14 +130,15 @@ In this project I show more techinical and algorithmic knowledge with a sorting 
         quickSort(array, low, pivotIndex - 1)
         quickSort(array, pivotIndex + 1, high)
 
+
     function partition(array, low, high):
       pivot = array[high]
       i = low - 1
 
       for j = low to high - 1:
-      if array[j] <= pivot:
-        i = i + 1
-        swap array[i] and array[j]
+        if array[j] <= pivot:
+          i = i + 1
+          swap array[i] and array[j]
 
       swap array[i + 1] and array[high]
       return i + 1
@@ -160,4 +154,3 @@ In this project I show more techinical and algorithmic knowledge with a sorting 
 - Disadvantages
   - Worse case time complexity is O(n^2)
   - Not stable, which means the relative order of equal elements may change during the sorting process.
->>>>>>> 025b2ed (merge sort + quick sort added, update readme)
