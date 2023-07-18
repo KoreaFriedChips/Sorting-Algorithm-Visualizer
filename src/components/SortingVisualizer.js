@@ -8,6 +8,7 @@ class SortingVisualizer extends Component {
     super(props);
     this.state = {
       array: [],
+      originalArray: [],
       isSorting: false,
       delaySpeed: 10,
       selectedAlgorithm: null,
@@ -25,7 +26,12 @@ class SortingVisualizer extends Component {
       array.push(randomIntFromInterval(5, 400));
     }
     // console.log(array)
-    this.setState({ array });
+    this.setState({ array, originalArray: array });
+  }
+
+  resetArray() {
+    const { originalArray } = this.state;
+    this.setState({ array: originalArray, selectedAlgorithm: false });
   }
 
   isSorted(array) {
@@ -46,7 +52,7 @@ class SortingVisualizer extends Component {
     if (this.isSorted(array)) {
       // Array is already sorted, no need to sort again
       toast.success(
-        "Already sorted! Generate a new array to visualize another sorting algorithm."
+        "Already sorted! Reset the array or generate a new array to visualize another sorting algorithm."
       );
       return true;
     }
@@ -146,16 +152,11 @@ class SortingVisualizer extends Component {
 
   mergeSortRecursive(array) {
     // Create a copy of the original array to avoid modifying it
-    const originalArray = array.slice();
+    const origArray = array.slice();
     const animations = [];
-    this.mergeSortHelper(
-      originalArray,
-      0,
-      originalArray.length - 1,
-      animations
-    );
+    this.mergeSortHelper(origArray, 0, origArray.length - 1, animations);
     // Return the sorted array and animations
-    return { sortedArray: originalArray, animations };
+    return { sortedArray: origArray, animations };
   }
 
   mergeSortHelper(array, start, end, animations) {
@@ -405,9 +406,14 @@ class SortingVisualizer extends Component {
             // disabled={isSorting}
           />
         </div>
-        <button onClick={() => this.generateArray()} disabled={isSorting}>
-          Generate New Array
-        </button>
+        <div>
+          <button onClick={() => this.generateArray()} disabled={isSorting}>
+            Generate New Array
+          </button>
+          <button onClick={() => this.resetArray()} disabled={isSorting}>
+            Reset Array
+          </button>
+        </div>
         {selectedAlgorithm && <AlgorithmInfo algorithm={selectedAlgorithm} />}
       </div>
     );
